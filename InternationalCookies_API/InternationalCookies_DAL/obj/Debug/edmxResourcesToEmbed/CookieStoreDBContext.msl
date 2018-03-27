@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InternationalCookiesModelStoreContainer" CdmEntityContainer="CookieStoreDBContext">
+    <EntitySetMapping Name="CookieOrders">
+      <EntityTypeMapping TypeName="InternationalCookiesModel.CookieOrder">
+        <MappingFragment StoreEntitySet="CookieOrders">
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="CookiesRequired" ColumnName="CookiesRequired" />
+          <ScalarProperty Name="OrderedDate" ColumnName="OrderedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoreDetails">
+      <EntityTypeMapping TypeName="InternationalCookiesModel.StoreDetail">
+        <MappingFragment StoreEntitySet="StoreDetails">
+          <ScalarProperty Name="StoreID" ColumnName="StoreID" />
+          <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+          <ScalarProperty Name="StoreLocation" ColumnName="StoreLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

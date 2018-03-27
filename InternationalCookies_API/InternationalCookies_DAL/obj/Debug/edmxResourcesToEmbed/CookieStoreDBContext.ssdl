@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InternationalCookiesModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CookieOrders">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreID" Type="int" />
+    <Property Name="CookiesRequired" Type="int" />
+    <Property Name="OrderedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="StoreDetails">
+    <Key>
+      <PropertyRef Name="StoreID" />
+    </Key>
+    <Property Name="StoreID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoreName" Type="nvarchar" MaxLength="50" />
+    <Property Name="StoreLocation" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FKey">
+    <End Role="StoreDetails" Type="Self.StoreDetails" Multiplicity="0..1" />
+    <End Role="CookieOrders" Type="Self.CookieOrders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StoreDetails">
+        <PropertyRef Name="StoreID" />
+      </Principal>
+      <Dependent Role="CookieOrders">
+        <PropertyRef Name="StoreID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InternationalCookiesModelStoreContainer">
+    <EntitySet Name="CookieOrders" EntityType="Self.CookieOrders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoreDetails" EntityType="Self.StoreDetails" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FKey" Association="Self.FKey">
+      <End Role="StoreDetails" EntitySet="StoreDetails" />
+      <End Role="CookieOrders" EntitySet="CookieOrders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
